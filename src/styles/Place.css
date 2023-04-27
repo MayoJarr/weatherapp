@@ -69,7 +69,18 @@ li {
 .place {
   border: 1px solid rgba(255, 255, 255, .3);
   border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 .placeLi:hover {
   background: rgba(255, 255, 255, .2);
+}
+.deleteBtn {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1.2rem;
+}
+.deleteBtn:hover{
+  color: #bbb;
 }

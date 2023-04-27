@@ -5,7 +5,7 @@ function Hour({hour, temp}) {
   return (
     <div className='hour'>
       <div>{hour}</div>
-      <div>{temp}C</div> 
+      <div>{temp}&#8451;</div> 
     </div>
   )
 }

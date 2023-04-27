@@ -40,6 +40,7 @@ body {
   border-radius: 10px;
   display: flex;
   overflow-x: scroll;
+  border: 2px solid rgba(255, 255, 255, .3);
 }
 .Days {
   grid-area: days;
@@ -47,6 +48,8 @@ body {
   border-radius: 10px;
   display: flex;
   overflow-x: scroll;
+  background: #77e;
+  border: 2px solid rgba(255, 255, 255, .3);
 } 
 .active {
   left: 0px;
@@ -75,10 +78,12 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
-  left: 10px;
+  left: 0px;
   font-size: .8rem;
   text-align: center;
   z-index: 10;
+  background: #77e;
+  width: 100%;
 }
 @media only screen and (max-width: 800px) {
   .Places {

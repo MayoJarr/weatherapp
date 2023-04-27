@@ -139,7 +139,7 @@ function App() {
         <div className='degreeContainer'>
           <div className='placeName'>{currentPlace != null ? `${currentPlace.name}, ${currentPlace.country}`: 'no data'}</div>
           <div className='placeDegrees'>
-            {currentPlace != null ? currentPlace.temp : 'no data'} C
+            {currentPlace != null ? currentPlace.temp : 'no data'}&#8451;
           </div>
         </div>
       </div>

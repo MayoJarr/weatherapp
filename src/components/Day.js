@@ -5,7 +5,7 @@ function Day({dayName, degrees}) {
   return (
     <div className='Day'>
       <div>{dayName}</div>
-      <div>{degrees} C</div>
+      <div>{degrees}&#8451;</div>
     </div>
   )
 }

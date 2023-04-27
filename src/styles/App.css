@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  color: white; 
+  font-family: roboto;
+  font-size: 1.5rem;
+}
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template: 33% 33% 33% / 20% 80%;
+  grid-template-areas: 
+  "places degrees"
+  "places hours"
+  "places days";
+  background: #88f;
+}
+.Places {
+  grid-area: places;
+  background: #77e;
+  z-index: 10;
+}
+.Degrees {
+  grid-area: degrees;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  text-align: center;
+}
+.Hours {
+  grid-area: hours;
+  background: #77e;
+  margin: 20px;
+  /* height: 200px; */
+  border-radius: 10px;
+  display: flex;
+  overflow-x: scroll;
+}
+.Days {
+  grid-area: days;
+  margin: 20px;
+  border-radius: 10px;
+  display: flex;
+  overflow-x: scroll;
+} 
+.active {
+  left: 0px;
+}
+.placesBtn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+}
+.overlay {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(30, 30, 30, .5);
+}
+.overlayActive {
+  display: block;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  font-size: .8rem;
+  text-align: center;
+  z-index: 10;
+}
+@media only screen and (max-width: 800px) {
+  .Places {
+    position: absolute;
+    height: 100vh;
+    left: -200px;
+    width: 200px;
+    transition: .3s ease-in-out;
+  }
+  .active {
+    left: 0px;
+  }
+  .App {
+    grid-template-areas: 
+    "degrees degrees"
+    "hours hours"
+    "days days";
+  }
+}
+

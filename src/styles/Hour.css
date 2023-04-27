@@ -1,0 +1,31 @@
+.hour {
+  background: #88f;
+  margin: 10px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  padding: 20px;
+  text-align: center;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #77e; 
+  border-radius: 5px;
+  /* border: 1px solid white; */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #88f; 
+  border-radius: 5px;
+  /* border: 1px solid white; */
+}
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover { */
+  /* background: #555;  */
+/* } */

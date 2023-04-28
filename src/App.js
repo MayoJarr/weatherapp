@@ -16,7 +16,6 @@ function App() {
   let [isPlacesVisible, setIsPlacesVisible] = useState(false);
 
   useEffect(() => {
-    console.log(`${lon} ${lat}`);
     test();
   }, []);
   //  CURRENT WEATHER
@@ -45,7 +44,6 @@ function App() {
       );
       let data = await fetchData.json();
       setSeatchResults((searchResults = data));
-      console.log(data);
     }
   };
   // SELECT LOCALISATION
@@ -73,14 +71,14 @@ function App() {
     setCurrentPlace((currentPlace = places[eo]));
   };
   const test = async () => {
-    let data = await fetchDataFromApi(50.78, 17.06);
-    let foreData = await getForecast(50.78, 17.06);
+    let data = await fetchDataFromApi(51.10, 17.03);
+    let foreData = await getForecast(51.10, 17.03);
     setPlaces(
       (places = [
         {
-          name: "Strzelin",
-          lat: 50.78,
-          lon: 17.06,
+          name: "Wroclaw",
+          lat: 51.10,
+          lon: 17.03,
           country: "PL",
           temp: data.main.temp,
           forecast: formatData(foreData),
@@ -120,11 +118,13 @@ function App() {
     });
     let thing = [];
     eo.forEach(day => {
+      let dayMiddle = Number((day.length / 2).toFixed(0))
       thing.push({
-        name: day[0].dt.toLocaleString("pl-pl", { weekday: "long" }),
+        name: day[0].dt.toLocaleString("en-en", { weekday: "long" }),
         // temp: getAvgTempOfDay(day).toFixed(1),
         temp: getHighestOfDay(day).toFixed(1),
         date: day[0].dt.getDate(),
+        icon: day[dayMiddle === 1 ? 0 : dayMiddle].weather[0].icon
       });
     });
     return thing;
@@ -137,7 +137,7 @@ function App() {
       if (hour.length === 4) {
         hour = "0" + hour;
       }
-      arr.push({ hour: hour, temp: item.main.temp.toFixed(1) });
+      arr.push({ hour: hour, temp: item.main.temp.toFixed(1), icon: item.weather[0].icon });
     });
     return arr;
   };
@@ -178,13 +178,13 @@ function App() {
       </div>
       <div className="Hours">
         {currentPlace != null
-          ? currentPlace.hourly.map(item => <Hour hour={item.hour} temp={item.temp} key={i++} />)
+          ? currentPlace.hourly.map(item => <Hour hour={item.hour} temp={item.temp} icon={item.icon} key={i++} />)
           : "no data"}
       </div>
       <div className="Days">
         {currentPlace != null
           ? currentPlace.forecast.map(item => (
-              <Day dayName={item.name} degrees={item.temp} key={item.date} />
+              <Day dayName={item.name} degrees={item.temp} icon={item.icon} key={item.date} />
             ))
           : "no data"}
       </div>

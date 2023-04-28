@@ -50,6 +50,7 @@ body {
   overflow-x: scroll;
   background: #77e;
   border: 2px solid rgba(255, 255, 255, .3);
+  justify-content: center;
 } 
 .active {
   left: 0px;

@@ -96,8 +96,9 @@ function App() {
     });
     return sum / days.length;
   };
-  const getHighestOfDay = day =>
-    day.reduce((acc, curr) => (curr.main.temp > acc ? curr.main.temp : acc), 0);
+  const getHighestOfDay = day => {
+    return day.reduce((acc, curr) => (curr.main.temp > acc ? curr.main.temp : acc), 0);
+  };
 
   const formatData = data => {
     data.list.map(e => (e.dt = new Date(e.dt * 1000)));
@@ -122,7 +123,7 @@ function App() {
       thing.push({
         name: day[0].dt.toLocaleString("en-en", { weekday: "long" }),
         // temp: getAvgTempOfDay(day).toFixed(1),
-        temp: getHighestOfDay(day).toFixed(1),
+        temp: getHighestOfDay(day).toFixed(0),
         date: day[0].dt.getDate(),
         icon: day[dayMiddle === 1 ? 0 : dayMiddle].weather[0].icon
       });
@@ -137,7 +138,7 @@ function App() {
       if (hour.length === 4) {
         hour = "0" + hour;
       }
-      arr.push({ hour: hour, temp: item.main.temp.toFixed(1), icon: item.weather[0].icon });
+      arr.push({ hour: hour, temp: item.main.temp.toFixed(0), icon: item.weather[0].icon });
     });
     return arr;
   };
@@ -172,7 +173,7 @@ function App() {
             {currentPlace != null ? `${currentPlace.name}, ${currentPlace.country}` : "no data"}
           </div>
           <div className="placeDegrees">
-            {currentPlace != null ? currentPlace.temp : "no data"}&#8451;
+            {currentPlace != null ? currentPlace.temp.toFixed(0): "no data"}&#8451;
           </div>
         </div>
       </div>

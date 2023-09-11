@@ -97,7 +97,7 @@ function App() {
     return sum / days.length;
   };
   const getHighestOfDay = day => {
-    day.reduce((acc, curr) => (curr.main.temp > acc ? curr.main.temp : acc), 0);
+    return day.reduce((acc, curr) => (curr.main.temp > acc ? curr.main.temp : acc), 0);
   };
 
   const formatData = data => {

@@ -46,10 +46,6 @@ function App() {
     setSeatchResults((searchResults = data));
     // }
   };
-  const choosePlace = (e) => {
-    const eo = places.findIndex((place) => place.lon === e.lon);
-    setCurrentPlace((currentPlace = places[eo]));
-  };
 
   // const getAvgTempOfDay = (days) => {
   //   let sum = 0;
@@ -123,21 +119,25 @@ function App() {
     setCurrentPlace((currentPlace = places[0]));
     formatDataToHours(foreData);
   };
+  const choosePlace = (e) => {
+    const eo = places.findIndex((place) => place.lon === e.lon);
+    setCurrentPlace((currentPlace = places[eo]));
+  };
   // SELECT LOCALISATION
   const addPlace = async (e) => {
     const data = await fetchDataFromApi(e.lat, e.lon);
     const foreData = await getForecast(e.lat, e.lon);
-    setPlaces(
-      places.concat({
-        name: e.name,
-        lat: e.lat,
-        lon: e.lon,
-        country: e.country,
-        temp: data.main.temp,
-        forecast: formatData(foreData),
-        hourly: formatDataToHours(foreData),
-      }),
-    );
+    const placeObj = {
+      name: e.name,
+      lat: e.lat,
+      lon: e.lon,
+      country: e.country,
+      temp: data.main.temp,
+      forecast: formatData(foreData),
+      hourly: formatDataToHours(foreData),
+    };
+    setPlaces(places.concat(placeObj));
+    setCurrentPlace(currentPlace = placeObj);
   };
 
   const deletePlace = (place) => setPlaces(places.filter((element) => element.lat !== place.lat));
